@@ -109,6 +109,11 @@ public class GUI extends JFrame {
             indexAktualniDeskovky--;
             updateGUI();
         }
+        if (spravceDeskovek.getPocetDeskovek() == 0)
+        {
+            btnPrevious.setEnabled(false);
+            updateGUI();
+        }
     }
 
     private void dalsiDeskovka() {
@@ -117,11 +122,20 @@ public class GUI extends JFrame {
             indexAktualniDeskovky++;
             updateGUI();
         }
+        if (spravceDeskovek.getPocetDeskovek() == 0)
+        {
+            btnNext.setEnabled(false);
+            updateGUI();
+        }
     }
 
     private void updateGUI() {
         if (indexAktualniDeskovky == 0) {
             btnPrevious.setEnabled(false);
+        }
+        if(spravceDeskovek.getPocetDeskovek() == 0)
+        {
+            btnNext.setEnabled(false);
         }
         if (indexAktualniDeskovky == spravceDeskovek.getPocetDeskovek() - 1) {
             btnNext.setEnabled(false);

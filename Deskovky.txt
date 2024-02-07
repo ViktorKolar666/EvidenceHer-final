@@ -1,6 +1,7 @@
-Šachy;ne;2
+Šachy;ano;2
 Dostihy a Sázky;ano;2
-Desítka;ne;1
+Mauglí žajglí;ano;3
 Osadníci z Katanu;ano;2
 Carcassonne;ano;1
 Krycí jména;ano;2
+Desítka;ne;1
