@@ -1,12 +1,14 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.security.Key;
 
 public class GUI extends JFrame {
     private JCheckBox checkBox; //zakoupeno ano/ne
-    private JRadioButton radBtn1;
-    private JRadioButton radBtn2;
-    private JRadioButton radBtn3;
+    private JRadioButton radBtn1;//oblibenost 1
+    private JRadioButton radBtn2; //oblibenost 2
+    private JRadioButton radBtn3;//oblibenost 3
     private JTextField textField;
     private JPanel mainPanel;
     private JButton btnPrevious;
@@ -14,6 +16,9 @@ public class GUI extends JFrame {
     private JButton btnNext;
     private JCheckBox upravCB;
     private JButton btnNew;
+    private JMenuBar menuBar = new JMenuBar(); //samotný bar, automaticky nahoře obrazovky
+    private JMenu menuAkce = new JMenu("ahoj"); //dropdown menu, položka v baru, muzu pridavat
+    private JMenuItem menuItem = new JMenuItem("neahoj");//položka menu, aka. tlačítko
 
     private int indexAktualniDeskovky = 0;
     private final SpravceDeskovek spravceDeskovek;
@@ -21,6 +26,7 @@ public class GUI extends JFrame {
     public GUI(SpravceDeskovek spravceDeskovek) {
         this.spravceDeskovek = spravceDeskovek;
         initComponents();
+        initMenu();
         setBounds(500, 200, 500, 500);
         updateGUI();
         btnNext.addActionListener(e -> dalsiDeskovka());
@@ -44,6 +50,7 @@ public class GUI extends JFrame {
         btnSave.setIcon(saveIcon);
         btnSave.setEnabled(false);
         btnNew.setEnabled(false);
+
         upravCB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -160,5 +167,14 @@ public class GUI extends JFrame {
                         break;
                 }
         }
+    }
+    private void initMenu()
+    {
+        menuItem.addActionListener(e -> {JOptionPane.showMessageDialog( this,"Hello World!");});
+        menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, ActionEvent.CTRL_MASK));
+        menuAkce.add(menuItem);
+        menuAkce.setMnemonic(KeyEvent.VK_A);
+        menuBar.add(menuAkce);
+        setJMenuBar(menuBar);//přidá panel s menu k oknu
     }
 }

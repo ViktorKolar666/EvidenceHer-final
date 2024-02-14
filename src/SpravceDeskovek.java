@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class SpravceDeskovek extends JFrame {
+    private static final String FILE = "deskovky.txt";
     private final ArrayList<Deskovka> seznamDeskovek = new ArrayList<>();
     public SpravceDeskovek() {
         cteni();
     }
     private void cteni() {
-        try (Scanner sc = new Scanner(new BufferedReader(new FileReader("deskovky.txt")))) {
+        try (Scanner sc = new Scanner(new BufferedReader(new FileReader(FILE)))) {
             while (sc.hasNextLine()) {
                 String radek = sc.nextLine();
                 String[] polozky = radek.split(";");
@@ -18,11 +19,13 @@ public class SpravceDeskovek extends JFrame {
                 int oblibenost = Integer.parseInt(polozky[2]);
                 seznamDeskovek.add(new Deskovka(nazev, zakoupeno, oblibenost));
             }
-        } catch (FileNotFoundException e) {
+        }catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } catch (OblibenostException e) {
             JOptionPane.showMessageDialog(null, e.getLocalizedMessage());
             throw new RuntimeException(e);
+        }catch (NumberFormatException e) {
+            System.err.println("Nefunguje to, chyba:"+e.getLocalizedMessage());
         }
     }
     public void pridejDeskovku(Deskovka deskovka) {
@@ -43,7 +46,7 @@ public class SpravceDeskovek extends JFrame {
     }
 
     private void zapis(){
-        try (PrintWriter printWriter = new PrintWriter(new BufferedWriter(new FileWriter("deskovky.txt")))) {
+        try (PrintWriter printWriter = new PrintWriter(new BufferedWriter(new FileWriter(FILE)))) {
             for (Deskovka deskovka : seznamDeskovek) {
                 printWriter.println(deskovka.getNazevHry() + ";" + (deskovka.isZakoupeno() ? "ano" : "ne") + ";" +
                         deskovka.getOblibenost());

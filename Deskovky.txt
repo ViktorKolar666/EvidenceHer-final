@@ -1,5 +1,6 @@
 Šachy;ano;2
 Dostihy a Sázky;ano;2
+Mystica;ano;3
 Mauglí žajglí;ano;3
 Osadníci z Katanu;ano;2
 Carcassonne;ano;1
