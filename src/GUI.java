@@ -176,5 +176,6 @@ public class GUI extends JFrame {
         menuAkce.setMnemonic(KeyEvent.VK_A);
         menuBar.add(menuAkce);
         setJMenuBar(menuBar);//přidá panel s menu k oknu
+        //JOptionPane.showMessageDialog(null, "Tohle píši ve vyskakovacím okně!", "Titulek okna", JOptionPane.WARNING_MESSAGE);
     }
 }
