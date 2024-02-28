@@ -170,7 +170,7 @@ public class GUI extends JFrame {
     }
     private void initMenu()
     {
-        menuItem.addActionListener(e -> {JOptionPane.showMessageDialog( this,"Hello World!");});
+        menuItem.addActionListener(e -> {JOptionPane.showMessageDialog( this,"Zdravíčko");});
         menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, ActionEvent.CTRL_MASK));
         menuAkce.add(menuItem);
         menuAkce.setMnemonic(KeyEvent.VK_A);
